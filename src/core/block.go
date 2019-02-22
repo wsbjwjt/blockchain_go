@@ -9,10 +9,10 @@ import (
 
 // Block keeps block headers
 type Block struct {
-	Timestamp     int64
-	Data          []byte
-	PrevBlockHash []byte
-	Hash          []byte
+	Timestamp     int64  // 区块创建的时间戳
+	Data          []byte // 区块包含的数据
+	PrevBlockHash []byte // 前一个区块的哈希值
+	Hash          []byte // 区块自身的哈希值，用于校验数据的有效
 }
 
 // SetHash calculates and sets block hash
@@ -32,6 +32,7 @@ func NewBlock(data string, prevBlockHash []byte) *Block {
 }
 
 // NewGenesisBlock creates and returns genesis Block
+// 第一个区块，创世纪区块
 func NewGenesisBlock() *Block {
 	return NewBlock("Genesis Block", []byte{})
 }
