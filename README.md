@@ -1,2 +1,2 @@
 # blockchain_go
-blockchain sample
+https://github.com/liuchengxu/blockchain-tutorial
