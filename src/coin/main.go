@@ -1,24 +1,25 @@
 package main
 
-import (
-	"core"
-	"fmt"
-	"strconv"
-)
+import "core"
+
+//const targetBits = 24
+//
+//func proof() {
+//	data1 := []byte("I like donuts")
+//	data2 := []byte("I like donutsca07ca")
+//	target := big.NewInt(1)
+//	target.Lsh(target, uint(256 - targetBits))
+//	fmt.Printf("%x\n", sha256.Sum256(data1))
+//	fmt.Printf("%064x\n", target)
+//	fmt.Printf("%x\n", sha256.Sum256(data2))
+//}
 
 func main() {
+	//proof()
 	bc := core.NewBlockchain()
+	defer bc.Db.Close()
 
-	bc.AddBlock("Send 1 BTC to Ivan")
-	bc.AddBlock("Send 2 more BTC to Ivan")
+	cli := core.CLI{Bc: bc}
 
-	for _, block := range bc.Blocks {
-		fmt.Printf("Prev. hash: %x\n", block.PrevBlockHash)
-		fmt.Printf("Data: %s\n", block.Data)
-		fmt.Printf("Hash: %x\n", block.Hash)
-		pow := core.NewProofOfWork(block)
-
-		fmt.Printf("PoW: %s\n", strconv.FormatBool(pow.Validate()))
-		fmt.Println()
-	}
+	cli.Run()
 }
