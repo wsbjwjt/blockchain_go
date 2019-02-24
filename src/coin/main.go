@@ -16,10 +16,9 @@ import "core"
 
 func main() {
 	//proof()
-	bc := core.NewBlockchain()
-	defer bc.Db.Close()
+	//bc := core.NewBlockchain()
+	//defer bc.Db.Close()
 
-	cli := core.CLI{Bc: bc}
-
+	cli := core.CLI{}
 	cli.Run()
 }
